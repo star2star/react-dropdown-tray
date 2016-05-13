@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* make lower area fill in full height of window, but subtract height of appbar
+   so that scroll does not appear
+*/
+.app2Wrapper {
+  min-height: calc(100vh - 40px);
+}
