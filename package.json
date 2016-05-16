@@ -7,7 +7,8 @@
     "test": "jest --verbose --coverage",
     "prebuild": "rm -rf lib/*.js",
     "build": "babel  ./src/index.jsx --out-file ./lib/index.js",
-    "postbuild": "babel  --minified ./src/index.jsx --out-file ./lib/index.min.js"
+    "postbuild": "babel  --minified ./src/index.jsx --out-file ./lib/index.min.js",
+    "start": "webpack-dev-server --inline --content-base public --history-api-fallback"
   },
   "author": "Tom Athens",
   "license": "MIT",
