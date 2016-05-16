@@ -14,6 +14,7 @@ Include:
   * which properties, if any, are required
   * what styles are passed in
   * which styles, if any, are default
+  * is accessible 
 
 Installation
 -------------
