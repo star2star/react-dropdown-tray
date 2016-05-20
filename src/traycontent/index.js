@@ -64,8 +64,21 @@ export default class TrayContent extends React.Component {
         borderWidth: '0px 8px 8px 8px',
         top: '0px',
         left: '20px',
-        zIndex: '1'
+        zIndex: '1',
+        visibility: 'visible'
       };
+
+
+      let arrowStyle;
+
+      console.log('visibleContent', this.props.visibleContent);
+      // if visibleContent is false, then hide the arrow
+      if (!this.props.visibleContent) {
+        arrowStyle = { ...arrowStyleTop, visibility: 'hidden'};
+      } else {
+        arrowStyle = arrowStyleTop;
+      }
+
 
       // A simple red box fills the tray
       const content1 = (<div style={{height:'400px', backgroundColor:'red'}}></div>);
@@ -80,7 +93,7 @@ export default class TrayContent extends React.Component {
       // (up/down/left/right)
       const content2 = (
                     <div className="contentWrap" style={{paddingTop:'8px'}}>
-                      <span style={arrowStyleTop}></span>
+                      <span style={arrowStyle}></span>
                       <div className="trayItems" style={trayItemsStyle}>
 
                         <div key="1" style={userNameStyle}>{this.props.userName}</div>
