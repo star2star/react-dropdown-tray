@@ -18,22 +18,7 @@ class DropdownTray extends React.Component {
           cursor: 'pointer',
           zIndex: '2',
           padding: '11px',
-
           backgroundColor: 'transparent'
-        };
-
-        // styles menu list dropdown, sets transition to/from off page
-        const menuListStyle = {
-          position: 'absolute',
-          maxHeight: '100vh', // this
-          width: '272px',
-          //top: '10px',
-          overflow: 'hidden',
-          opacity: '1',
-          zIndex: '1',
-          visibility: 'visible',
-          //backgroundColor: '#ffffff',
-          transition: 'max-height .4s ease-in, opacity .3s ease-in'
         };
 
         const btnStyle = {
@@ -47,17 +32,32 @@ class DropdownTray extends React.Component {
           border: 'none',
           color: 'transparent',
           backgroundColor: 'transparent',
-          //outline: 'none',
+          outline: 'none',
           cursor: 'pointer',
           width: '100%'
+        };
+
+        // styles menu list dropdown, sets transition to/from off page
+        const menuListStyle = {
+          position: 'absolute',
+          maxHeight: '100vh', // this
+          width: '272px',
+          top: '0px',
+          overflow: 'hidden',
+          opacity: '1',
+          zIndex: '1',
+          visibility: 'visible',
+          //backgroundColor: '#ffffff',
+          transition: 'max-height .4s ease-in, opacity .3s ease-in, top .2s ease-in'
         };
 
         const contentStyle = this.props.visibleContent ?
                           {...menuListStyle} :
                           {...menuListStyle, maxHeight: '0',
                               opacity: '0',
+                              top: '-10px',
                               visibility: 'hidden',
-                              transition: 'max-height .4s ease-out, opacity .4s ease-out, visibility 1s'};
+                              transition: 'max-height .4s ease-out, opacity .4s ease-out, top .2s ease-out, visibility 1s'};
 
         return (
             <div style={{display:'flex', flexDirection: "column", position:"relative", zIndex: '2'}}>
@@ -67,6 +67,7 @@ class DropdownTray extends React.Component {
                 {/* use button for click handling and for accessibility */}
                 <button onClick={()=>this.props.cbClickTrayControl()}
                     style={btnStyle}
+                    aria-expanded={this.props.visibleContent? true : false}
                     >Click to toggle Tray</button>
               </div>
               <TrayContent contentStyle={contentStyle} visibleContent={this.props.visibleContent} userName={this.props.userName} userstate={this.props.userstate}/>
